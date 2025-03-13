@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="280" height="570" viewBox="0 0 280 570" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond d'écran -->
+  <rect width="280" height="570" fill="#121212"/>
+  
+  <!-- Barre d'état -->
+  <text x="30" y="40" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="white">21:07</text>
+  <path d="M245 35 L250 35 M247.5 32.5 L247.5 37.5" stroke="white" stroke-width="1.5" fill="none"/>
+  <path d="M220 32 Q225 32, 225 35 Q225 38, 220 38 M217 32 L217 38 M213 34 L213 36" stroke="white" stroke-width="1.5" fill="none"/>
+  <rect x="195" y="32" width="15" height="15" rx="2" stroke="white" stroke-width="1.5" fill="none"/>
+  
+  <!-- En-tête -->
+  <text x="140" y="95" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">Your Journey</text>
+  
+  <!-- Carte Reflections - Ajustement du cadrage -->
+  <rect x="30" y="130" width="220" height="120" rx="16" fill="#4D8AF0"/>
+  <text x="50" y="165" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="white">Your Reflections</text>
+  <!-- Ajustement du texte pour un meilleur cadrage -->
+  <text x="50" y="195" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="white" opacity="0.9">The path of experience is the wisest.</text>
+  <text x="50" y="215" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="white" opacity="0.9">Revisit past entries to discover patterns</text>
+  <text x="50" y="235" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="white" opacity="0.9">and insights about your emotional</text>
+  <text x="50" y="255" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="white" opacity="0.9">journey.</text>
+  
+  <!-- Date 1 -->
+  <text x="30" y="295" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="white">13 Mar 2025</text>
+  
+  <!-- Entrée 1 -->
+  <rect x="30" y="310" width="220" height="85" rx="16" fill="#2E6D4A"/>
+  
+  <!-- Arc décoratif -->
+  <path d="M40 350 Q45 320, 70 315" stroke="#1E593A" stroke-width="2" fill="none"/>
+  <circle cx="35" cy="350" r="3" fill="#1E593A"/>
+  
+  <!-- Emoji content -->
+  <circle cx="70" cy="340" r="20" fill="#2E6D4A" stroke="#1E593A" stroke-width="1"/>
+  <text x="70" y="348" font-family="sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">😃</text>
+  
+  <!-- Mood text -->
+  <text x="110" y="340" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="white">Happy</text>
+  <text x="110" y="360" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#CCCCCC">21:07</text>
+  
+  <!-- Edit button -->
+  <circle cx="225" cy="340" r="15" fill="#333333"/>
+  <path d="M219 340 L231 340" stroke="white" stroke-width="1.5"/>
+  <path d="M225 334 L225 346" stroke="white" stroke-width="1.5"/>
+  
+  <!-- Delete button -->
+  <circle cx="225" cy="375" r="15" fill="#333333"/>
+  <path d="M219 375 L231 375" stroke="white" stroke-width="1.5"/>
+  
+  <!-- Date 2 -->
+  <text x="30" y="430" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="white">11 Mar 2025</text>
+  
+  <!-- Entrée 2 -->
+  <rect x="30" y="445" width="220" height="85" rx="16" fill="#2E6D4A"/>
+  
+  <!-- Arc décoratif -->
+  <path d="M40 485 Q45 455, 70 450" stroke="#1E593A" stroke-width="2" fill="none"/>
+  <circle cx="35" cy="485" r="3" fill="#1E593A"/>
+  
+  <!-- Emoji content -->
+  <circle cx="70" cy="475" r="20" fill="#2E6D4A" stroke="#1E593A" stroke-width="1"/>
+  <text x="70" y="483" font-family="sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">😊</text>
+  
+  <!-- Mood text -->
+  <text x="110" y="475" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="white">Happy</text>
+  <text x="110" y="495" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#CCCCCC">21:07</text>
+  
+  <!-- Edit button -->
+  <circle cx="225" cy="475" r="15" fill="#333333"/>
+  <path d="M219 475 L231 475" stroke="white" stroke-width="1.5"/>
+  <path d="M225 469 L225 481" stroke="white" stroke-width="1.5"/>
+  
+  <!-- Delete button -->
+  <circle cx="225" cy="510" r="15" fill="#333333"/>
+  <path d="M219 510 L231 510" stroke="white" stroke-width="1.5"/>
+  
+  <!-- Entrée 3 (juste assez visible pour montrer qu'il y a plus d'entrées) -->
+  <rect x="30" y="535" width="220" height="55" rx="16" fill="#A06235"/>
+  
+  <!-- Arc décoratif -->
+  <path d="M40 565 Q45 535, 70 530" stroke="#8A5225" stroke-width="2" fill="none"/>
+  <circle cx="35" cy="565" r="3" fill="#8A5225"/>
+  
+  <!-- Emoji content -->
+  <circle cx="70" cy="555" r="20" fill="#A06235" stroke="#8A5225" stroke-width="1"/>
+  <text x="70" y="563" font-family="sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">😔</text>
+  
+  <!-- Mood text -->
+  <text x="110" y="555" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="white">Sad</text>
+  <text x="110" y="575" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#CCCCCC">21:06</text>
+  
+  <!-- Barre de navigation -->
+  <rect x="0" y="520" width="280" height="50" fill="#F2F2F2" fill-opacity="0.15"/>
+  
+  <!-- Icônes de navigation -->
+  <text x="70" y="550" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#AAAAAA" text-anchor="middle">Dashboard</text>
+  <text x="140" y="550" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#4D8AF0" text-anchor="middle">History</text>
+  <text x="210" y="550" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#AAAAAA" text-anchor="middle">Settings</text>
+  
+  <!-- Icônes spécifiques -->
+  <rect x="60" y="530" width="20" height="15" stroke="#AAAAAA" stroke-width="1.5" fill="none" rx="3"/>
+  <circle cx="140" cy="535" r="8" fill="#4D8AF0"/>
+  <rect x="200" y="530" width="17" height="11" rx="2" stroke="#AAAAAA" stroke-width="1.5" fill="none"/>
+  <path d="M197 534 L204 534 M197 537 L204 537" stroke="#AAAAAA" stroke-width="1.5"/>
+</svg> 
