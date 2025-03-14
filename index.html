@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoodNotes | Suivez votre bien-être émotionnel</title>
+    <title>Moodly | Suivez votre bien-être émotionnel</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">MoodNotes</div>
+            <div class="logo">Moodly</div>
             <div class="nav-links">
                 <a href="#features">Fonctionnalités</a>
                 <a href="#about">À propos</a>
@@ -26,20 +26,115 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Suivez votre parcours émotionnel</h1>
-            <p>MoodNotes vous aide à enregistrer vos émotions quotidiennes, à identifier des schémas et à obtenir des insights précieux sur votre bien-être.</p>
+            <p>Moodly vous aide à enregistrer vos émotions quotidiennes, à identifier des schémas et à obtenir des insights précieux sur votre bien-être.</p>
             <div class="cta-buttons">
                 <a href="#download" class="btn-primary">Télécharger l'app</a>
                 <a href="#features" class="btn-secondary">Découvrir</a>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="phone-mockup">
-                <div class="phone-screen">
-                    <img src="assets/screenshots/dashboard-screen.png" alt="MoodNotes Dashboard" class="app-screenshot">
+        
+        <div class="floating-quote">
+            <div class="quote-bubble">
+                <p>"Comprendre ses émotions est le premier pas vers le bien-être"</p>
+            </div>
+        </div>
+        
+        <div class="device-showcase">
+            <div class="device-wrapper">
+                <div class="device device-1" id="device-1">
+                    <div class="device-shadow"></div>
+                    <div class="device-frame">
+                        <div class="device-screen">
+                            <img src="assets/screenshots/dashboard-screen.png" alt="Moodly Dashboard">
+                        </div>
+                        <div class="device-highlight"></div>
+                        <div class="device-features">
+                            <div class="feature-dot" style="top: 35%; left: 25%">
+                                <span class="dot-pulse"></span>
+                                <div class="feature-info">
+                                    <h4>Suivi d'humeur</h4>
+                                    <p>Enregistrez facilement votre humeur avec des emojis expressifs</p>
+                                </div>
+                            </div>
+                            <div class="feature-dot" style="top: 65%; left: 75%">
+                                <span class="dot-pulse"></span>
+                                <div class="feature-info">
+                                    <h4>Statistiques hebdomadaires</h4>
+                                    <p>Visualisez l'évolution de votre humeur au fil du temps</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
+                <div class="device device-2" id="device-2">
+                    <div class="device-shadow"></div>
+                    <div class="device-frame">
+                        <div class="device-screen">
+                            <img src="assets/screenshots/history-screen.png" alt="Moodly History">
+                        </div>
+                        <div class="device-highlight"></div>
+                        <div class="device-features">
+                            <div class="feature-dot" style="top: 30%; left: 65%">
+                                <span class="dot-pulse"></span>
+                                <div class="feature-info">
+                                    <h4>Historique détaillé</h4>
+                                    <p>Consultez l'historique complet de vos émotions</p>
+                                </div>
+                            </div>
+                            <div class="feature-dot" style="top: 55%; left: 25%">
+                                <span class="dot-pulse"></span>
+                                <div class="feature-info">
+                                    <h4>Insights personnalisés</h4>
+                                    <p>Recevez des analyses basées sur vos données émotionnelles</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-controls">
+                <button class="device-btn active" data-device="device-1">Dashboard</button>
+                <button class="device-btn" data-device="device-2">Historique</button>
             </div>
         </div>
     </section>
+
+    <section class="interactive-banner">
+        <div class="banner-content">
+            <h2>Explorez vos émotions</h2>
+            <p>Découvrez comment la journalisation quotidienne de vos émotions peut transformer votre bien-être mental</p>
+        </div>
+        <div class="emoji-cloud">
+            <span class="floating-emoji" style="--delay: 0s; --size: 70px; --top: 20%; --left: 80%;">😊</span>
+            <span class="floating-emoji" style="--delay: 2s; --size: 55px; --top: 60%; --left: 30%;">😌</span>
+            <span class="floating-emoji" style="--delay: 4s; --size: 65px; --top: 75%; --left: 70%;">🙂</span>
+            <span class="floating-emoji" style="--delay: 6s; --size: 50px; --top: 30%; --left: 20%;">😍</span>
+            <span class="floating-emoji" style="--delay: 8s; --size: 60px; --top: 40%; --left: 60%;">😀</span>
+            <span class="floating-emoji negative" style="--delay: 3s; --size: 55px; --top: 65%; --left: 15%;">😔</span>
+            <span class="floating-emoji negative" style="--delay: 5s; --size: 60px; --top: 25%; --left: 40%;">😢</span>
+            <span class="floating-emoji negative" style="--delay: 7s; --size: 50px; --top: 70%; --left: 85%;">😕</span>
+        </div>
+        <div class="scroll-indicator">
+            <span class="mouse">
+                <span class="mouse-wheel"></span>
+            </span>
+            <p>Découvrez plus</p>
+        </div>
+    </section>
+
+    <div class="wave-separator">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="parallax-dots">
+            <span class="dot dot1"></span>
+            <span class="dot dot2"></span>
+            <span class="dot dot3"></span>
+            <span class="dot dot4"></span>
+            <span class="dot dot5"></span>
+        </div>
+    </div>
 
     <section id="features" class="features">
         <h2>Fonctionnalités principales</h2>
@@ -75,32 +170,17 @@
         </div>
     </section>
 
-    <section class="app-showcase">
-        <div class="showcase-text">
-            <h2>Votre parcours émotionnel</h2>
-            <p>La sagesse vient de l'expérience. Revisitez vos entrées passées pour découvrir des schémas et des insights sur votre parcours émotionnel.</p>
-            <ul class="feature-list">
-                <li><i class="fas fa-check"></i> Visualisez vos entrées par date</li>
-                <li><i class="fas fa-check"></i> Modifiez ou supprimez facilement vos entrées</li>
-                <li><i class="fas fa-check"></i> Ajoutez des notes détaillées à chaque humeur</li>
-                <li><i class="fas fa-check"></i> Recevez des insights quotidiens inspirants</li>
-            </ul>
-        </div>
-        <div class="showcase-image">
-            <div class="phone-mockup">
-                <div class="phone-screen">
-                    <img src="assets/screenshots/history-screen.png" alt="MoodNotes History" class="app-screenshot">
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="space-separator">
+        <div class="floating-element"></div>
+        <div class="orbit-circle"></div>
+    </div>
 
     <section id="testimonials" class="testimonials">
         <h2>Ce que disent nos utilisateurs</h2>
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-emoji">😊</div>
-                <p class="testimonial-text">"MoodNotes m'a aidé à mieux comprendre mes émotions et à identifier les déclencheurs de stress."</p>
+                <p class="testimonial-text">"Moodly m'a aidé à mieux comprendre mes émotions et à identifier les déclencheurs de stress."</p>
                 <p class="testimonial-author">- Marie L.</p>
             </div>
             <div class="testimonial-card">
@@ -116,17 +196,21 @@
         </div>
     </section>
 
+    <div class="gradient-separator">
+        <div class="gradient-line"></div>
+    </div>
+
     <section id="about" class="about">
-        <h2>À propos de MoodNotes</h2>
-        <p>MoodNotes est née de la conviction que la conscience émotionnelle est la clé du bien-être. Notre application vous aide à transformer de simples enregistrements d'humeur en insights précieux pour améliorer votre qualité de vie.</p>
+        <h2>À propos de Moodly</h2>
+        <p>Moodly est née de la conviction que la conscience émotionnelle est la clé du bien-être. Notre application vous aide à transformer de simples enregistrements d'humeur en insights précieux pour améliorer votre qualité de vie.</p>
         <div class="quote-card">
             <p class="quote-text">"Le bonheur se trouve quand vous arrêtez de vous comparer aux autres."</p>
-            <p class="quote-source">- Insight quotidien de MoodNotes</p>
+            <p class="quote-source">- Insight quotidien de Moodly</p>
         </div>
     </section>
 
     <section id="download" class="download">
-        <h2>Téléchargez MoodNotes aujourd'hui</h2>
+        <h2>Téléchargez Moodly aujourd'hui</h2>
         <p>Commencez votre parcours vers une meilleure conscience émotionnelle</p>
         <div class="download-buttons">
             <a href="#" class="download-btn">
@@ -141,7 +225,7 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">MoodNotes</div>
+            <div class="footer-logo">Moodly</div>
             <div class="footer-simple">
                 <p>Une application pour suivre et améliorer votre bien-être émotionnel</p>
                 <div class="social-icons">
@@ -151,7 +235,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 MoodNotes. Tous droits réservés.</p>
+            <p>&copy; 2023 Moodly. Tous droits réservés.</p>
         </div>
     </footer>
 

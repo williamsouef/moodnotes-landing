@@ -1,10 +1,10 @@
-# MoodNotes - Landing Page
+# Moodly - Landing Page
 
-Une landing page élégante et responsive pour l'application mobile MoodNotes, conçue pour suivre et analyser votre bien-être émotionnel.
+Une landing page élégante et responsive pour l'application mobile Moodly, conçue pour suivre et analyser votre bien-être émotionnel.
 
 ## À propos du projet
 
-Cette landing page a été créée pour présenter l'application MoodNotes, une application de suivi d'humeur qui permet aux utilisateurs d'enregistrer leurs émotions quotidiennes à l'aide d'emojis expressifs. L'interface utilisateur est inspirée des captures d'écran fournies, avec un thème sombre moderne et élégant.
+Cette landing page a été créée pour présenter l'application Moodly, une application de suivi d'humeur qui permet aux utilisateurs d'enregistrer leurs émotions quotidiennes à l'aide d'emojis expressifs. L'interface utilisateur est inspirée des captures d'écran fournies, avec un thème sombre moderne et élégant.
 
 ## Fonctionnalités de la landing page
 
@@ -42,7 +42,7 @@ Puis naviguez vers `http://localhost:8000` (pour Python) ou `http://localhost:30
 ## Structure des fichiers
 
 ```
-MoodNotes/
+Moodly/
 │
 ├── index.html          # Structure HTML principale
 ├── styles.css          # Styles CSS
@@ -81,4 +81,4 @@ Ce projet est à des fins de démonstration uniquement.
 
 ---
 
-Créé avec ❤️ pour MoodNotes - Votre parcours vers le bien-être émotionnel. 
+Créé avec ❤️ pour Moodly - Votre parcours vers le bien-être émotionnel. 
