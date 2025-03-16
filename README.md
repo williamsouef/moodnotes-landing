@@ -1,84 +1,70 @@
 # Moodly - Landing Page
 
-Une landing page élégante et responsive pour l'application mobile Moodly, conçue pour suivre et analyser votre bien-être émotionnel.
+An elegant and responsive landing page for the Moodly mobile application, designed to track and analyze your emotional well-being.
 
-## À propos du projet
+## About the Project
 
-Cette landing page a été créée pour présenter l'application Moodly, une application de suivi d'humeur qui permet aux utilisateurs d'enregistrer leurs émotions quotidiennes à l'aide d'emojis expressifs. L'interface utilisateur est inspirée des captures d'écran fournies, avec un thème sombre moderne et élégant.
+This landing page was created to showcase the Moodly application, a mood tracking app that allows users to record their daily emotions using expressive emojis. The user interface is inspired by the provided screenshots, with a modern and elegant dark theme.
 
-## Fonctionnalités de la landing page
+## Landing Page Features
 
-- Design responsive s'adaptant à tous les appareils
-- Animations fluides et interactives
-- Présentation des principales fonctionnalités de l'application
-- Maquettes de l'application intégrées
-- Témoignages d'utilisateurs
-- Section de téléchargement avec liens vers les app stores
+- **Modern Dark Theme**: Elegant and eye-friendly design
+- **Responsive Design**: Optimized for all devices (mobile, tablet, desktop)
+- **Interactive Mockups**: Showcasing the app's main features
+- **Smooth Animations**: Enhancing the user experience
+- **Call-to-Action**: Clear download buttons
 
-## Technologies utilisées
+## Technical Features
 
-- HTML5
-- CSS3 (avec variables CSS pour la cohérence des couleurs)
-- JavaScript vanilla (sans dépendances)
-- SVG pour les maquettes d'application
+- **Semantic HTML5**: Clean and accessible markup
+- **Modern CSS**: Flexbox, Grid, and CSS Variables
+- **Pure JavaScript**: No frameworks or libraries needed
+- **Optimized Animations**: Smooth transitions and effects
+- **Responsive Design**: Mobile-first approach
 
-## Comment exécuter le projet
-
-1. Clonez ce dépôt sur votre machine locale
-2. Ouvrez le fichier `index.html` dans votre navigateur web
-
-Ou simplement:
-
-```bash
-# Si vous avez Python installé
-python -m http.server
-
-# Si vous avez Node.js installé
-npx serve
-```
-
-Puis naviguez vers `http://localhost:8000` (pour Python) ou `http://localhost:3000` (pour Node.js).
-
-## Structure des fichiers
+## Project Structure
 
 ```
 Moodly/
 │
-├── index.html          # Structure HTML principale
-├── styles.css          # Styles CSS
-├── script.js           # Fonctionnalités JavaScript
-├── assets/             # Ressources
-│   ├── dashboard-screen.svg    # Capture d'écran du tableau de bord
-│   └── history-screen.svg      # Capture d'écran de l'historique
-└── README.md           # Ce fichier
+├── index.html          # Main HTML structure
+├── styles.css          # CSS styles
+├── script.js           # JavaScript for interactions
+└── assets/             # Images and resources
+    └── screenshots/    # App screenshots
+        ├── dashboard-screen.png
+        └── history-screen.png
 ```
 
-## Fonctionnalités de l'application (présentées sur la landing page)
+## Getting Started
 
-- **Suivi de l'humeur**: Enregistrez facilement votre humeur quotidienne avec des emojis expressifs
-- **Historique**: Consultez vos entrées passées pour observer l'évolution de votre bien-être
-- **Insights**: Obtenez des analyses détaillées et des schémas sur vos données émotionnelles
-- **Paramètres**: Personnalisez l'application selon vos préférences
+To view the landing page locally:
 
-## Captures d'écran
+1. Clone this repository
+2. Open `index.html` in your browser
 
-Les captures d'écran SVG intégrées montrent:
-1. Un tableau de bord avec des cartes pour le suivi de l'humeur, l'historique, les insights et les paramètres
-2. Une vue historique présentant les entrées d'humeur précédentes avec des emojis et des notes
+Or simply visit the deployed version at: [Moodly Landing Page](https://your-deployment-url.com)
 
-## Personnalisation
+## Customization
 
-Pour personnaliser cette landing page:
+You can easily customize this landing page:
 
-- Modifiez les couleurs dans le fichier CSS (variables root)
-- Ajoutez vos propres captures d'écran dans le dossier assets/
-- Mettez à jour les textes dans index.html pour correspondre à votre message marketing
-- Ajoutez des fonctionnalités supplémentaires selon vos besoins
+- Change colors in the CSS variables
+- Replace screenshots with your own
+- Modify text content in the HTML
+- Adjust animations in the JavaScript file
 
-## Licence
+## Browser Support
 
-Ce projet est à des fins de démonstration uniquement.
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-Créé avec ❤️ pour Moodly - Votre parcours vers le bien-être émotionnel. 
+Created with ❤️ for Moodly - Your journey to emotional well-being. 
