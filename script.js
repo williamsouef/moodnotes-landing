@@ -284,6 +284,119 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Email capture modal functionality
+    const emailModal = document.getElementById('email-modal');
+    const testflightBtn = document.getElementById('testflight-btn');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const emailForm = document.getElementById('email-capture-form');
+    const formMessage = document.querySelector('.form-message');
+
+    // Open modal when TestFlight button is clicked
+    if (testflightBtn) {
+        testflightBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal();
+        });
+    }
+
+    // Close modal when close button is clicked
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', function(e) {
+        if (e.target === emailModal) {
+            closeModal();
+        }
+    });
+
+    // Close modal when ESC key is pressed
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && emailModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Form submission
+    if (emailForm) {
+        emailForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('user-email').value;
+            
+            if (validateEmail(email)) {
+                // Here you would typically send the email to your backend/API
+                // For now we'll simulate a successful submission
+                submitEmailToServer(email);
+            } else {
+                showFormMessage('Please enter a valid email address', 'error');
+            }
+        });
+    }
+
+    function openModal() {
+        emailModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    }
+
+    function closeModal() {
+        emailModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    function validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email.toLowerCase());
+    }
+
+    function showFormMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = 'form-message';
+        formMessage.classList.add(type);
+    }
+
+    function submitEmailToServer(email) {
+        // Simulate sending to server with a delay
+        showFormMessage('Sending...', '');
+        
+        // In a real implementation, you would use fetch() or XMLHttpRequest to send to your backend
+        setTimeout(function() {
+            // Simulating successful submission
+            showFormMessage('Thank you! Check your email for TestFlight access instructions.', 'success');
+            
+            // Reset form after successful submission
+            emailForm.reset();
+            
+            // Close modal after a delay
+            setTimeout(closeModal, 3000);
+        }, 1500);
+        
+        // Example of what a real implementation might look like:
+        /*
+        fetch('https://your-api-endpoint.com/testflight-signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showFormMessage('Thank you! Check your email for TestFlight access instructions.', 'success');
+                emailForm.reset();
+                setTimeout(closeModal, 3000);
+            } else {
+                showFormMessage(data.message || 'Something went wrong. Please try again.', 'error');
+            }
+        })
+        .catch(error => {
+            showFormMessage('Connection error. Please try again later.', 'error');
+            console.error('Error:', error);
+        });
+        */
+    }
 });
 
 // Ajouter des styles d'animation

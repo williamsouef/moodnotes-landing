@@ -213,7 +213,7 @@
         <h2>Try Moodly Today</h2>
         <p>Join our exclusive preview and be among the first to experience emotional well-being tracking</p>
         <div class="download-buttons">
-            <a href="#" class="download-btn">
+            <a href="javascript:void(0)" id="testflight-btn" class="download-btn">
                 <i class="fab fa-apple"></i>
                 <span>
                     <small>Test the app on</small>
@@ -238,6 +238,29 @@
             <p>&copy; 2023 Moodly. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- TestFlight Email Capture Modal -->
+    <div id="email-modal" class="email-modal">
+        <div class="email-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>Join Our TestFlight Program</h3>
+                <p>Enter your email to get exclusive early access to Moodly</p>
+            </div>
+            <form id="email-capture-form">
+                <div class="form-group">
+                    <input type="email" id="user-email" placeholder="Your email address" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">Get TestFlight Access</button>
+                </div>
+                <div class="form-message"></div>
+            </form>
+            <div class="privacy-note">
+                <p>We'll only use your email to send you TestFlight access and important updates about Moodly.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
