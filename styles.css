@@ -409,42 +409,51 @@ a {
 .hero {
     position: relative;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px 100px;
+    padding: 120px 0 60px;
     overflow: hidden;
     background: radial-gradient(circle at 10% 20%, rgba(30, 33, 44, 1) 0%, rgba(20, 21, 27, 1) 90%);
 }
 
+.hero-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+}
+
 .hero-content {
-    max-width: 700px;
-    text-align: center;
-    margin-bottom: 50px;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 600px;
+    z-index: 2;
 }
 
 .hero h1 {
-    font-size: 56px;
-    margin-bottom: 20px;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
     background: linear-gradient(150deg, white, rgba(255, 255, 255, 0.7));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.hero p {
-    font-size: 20px;
+.hero-subtitle {
+    font-size: clamp(16px, 2vw, 20px);
     color: var(--text-light-secondary);
-    margin-bottom: 30px;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
 }
 
 .trust-badges {
     display: flex;
-    justify-content: center;
     gap: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 }
 
@@ -464,6 +473,126 @@ a {
     margin-right: 5px;
     font-size: 12px;
     color: var(--primary-color);
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.micro-copy {
+    font-size: 13px;
+    color: var(--text-light-tertiary);
+    margin-bottom: 2rem;
+}
+
+.social-proof-banner {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 20px;
+    border-radius: 12px;
+    max-width: 100%;
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.floating-quote {
+    position: relative;
+    align-self: flex-start;
+    margin-top: 1rem;
+    transform: translateX(20px) rotate(-2deg);
+    max-width: 300px;
+}
+
+.device-showcase {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    height: 100%;
+}
+
+.device-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+/* Responsive Styles for Hero Section */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        align-items: center;
+        text-align: center;
+        order: 1;
+    }
+    
+    .device-showcase {
+        order: 0;
+        margin-top: 2rem;
+    }
+    
+    .floating-quote {
+        align-self: center;
+        transform: none;
+        margin-top: 2rem;
+    }
+    
+    .trust-badges {
+        justify-content: center;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .social-proof-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 100px 0 40px;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cta-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .device-showcase {
+        transform: scale(0.8);
+        margin-top: 0;
+        margin-bottom: -40px;
+    }
 }
 
 .hero-screenshots {
