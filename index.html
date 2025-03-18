@@ -243,23 +243,47 @@
     <div id="email-modal" class="email-modal">
         <div class="email-modal-content">
             <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h3>Join Our TestFlight Program</h3>
-                <p>Enter your email to get exclusive early access to Moodly</p>
+            <div id="email-form-container">
+                <div class="modal-header">
+                    <h3>Join Our TestFlight Program</h3>
+                    <p>Enter your email to get exclusive early access to Moodly</p>
+                </div>
+                <form id="email-capture-form">
+                    <div class="form-group">
+                        <input type="email" id="user-email" placeholder="Your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Get TestFlight Access</button>
+                    </div>
+                    <div class="form-message"></div>
+                </form>
+                <div class="privacy-note">
+                    <p>We'll only use your email to send you TestFlight access and important updates about Moodly.</p>
+                </div>
             </div>
-            <form id="email-capture-form">
-                <div class="form-group">
-                    <input type="email" id="user-email" placeholder="Your email address" required>
+            <!-- TestFlight Link Container (hidden by default) -->
+            <div id="testflight-link-container" class="testflight-link-container">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="submit-btn">Get TestFlight Access</button>
+                <h3>Thank you for joining!</h3>
+                <p>Install Moodly beta using the link below:</p>
+                <a href="https://testflight.apple.com/join/yourtestflightcode" class="testflight-link" target="_blank">
+                    <i class="fab fa-apple"></i> Open TestFlight
+                </a>
+                <div class="testflight-note">
+                    <p>You'll also receive an email with these instructions.</p>
                 </div>
-                <div class="form-message"></div>
-            </form>
-            <div class="privacy-note">
-                <p>We'll only use your email to send you TestFlight access and important updates about Moodly.</p>
             </div>
         </div>
+    </div>
+
+    <!-- Hidden Admin Access (will be accessible via /admin.html page) -->
+    <div id="admin-access" style="display: none;">
+        <form id="admin-login-form">
+            <input type="password" id="admin-password" placeholder="Admin Password">
+            <button type="submit">Login</button>
+        </form>
     </div>
 
     <script src="script.js"></script>

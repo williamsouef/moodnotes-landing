@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodly Admin Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="admin-login-card">
+            <div class="admin-login-header">
+                <h1>Moodly Admin</h1>
+                <p>Enter your password to access the dashboard</p>
+            </div>
+            <form id="admin-login-form" class="admin-login-form">
+                <input type="password" id="admin-password" placeholder="Admin Password" required>
+                <div id="login-error" class="form-message error" style="display: none;"></div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="admin-login-footer">
+                <a href="index.html">← Back to homepage</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminLoginForm = document.getElementById('admin-login-form');
+            const loginError = document.getElementById('login-error');
+            
+            if (adminLoginForm) {
+                adminLoginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const password = document.getElementById('admin-password').value;
+                    
+                    // Simple password check (in a real app, this would be done server-side)
+                    if (password === 'moodly2023admin') {
+                        // Store auth state in localStorage
+                        localStorage.setItem('moodlyAdminAuth', 'true');
+                        // Redirect to admin dashboard
+                        window.location.href = 'admin-dashboard.html';
+                    } else {
+                        loginError.textContent = 'Invalid password';
+                        loginError.style.display = 'block';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

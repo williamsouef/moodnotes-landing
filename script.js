@@ -291,7 +291,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalBtn = document.querySelector('.close-modal');
     const emailForm = document.getElementById('email-capture-form');
     const formMessage = document.querySelector('.form-message');
-
+    const testflightLinkContainer = document.getElementById('testflight-link-container');
+    
     // Open modal when TestFlight button is clicked
     if (testflightBtn) {
         testflightBtn.addEventListener('click', function(e) {
@@ -327,7 +328,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (validateEmail(email)) {
                 // Here you would typically send the email to your backend/API
-                // For now we'll simulate a successful submission
                 submitEmailToServer(email);
             } else {
                 showFormMessage('Please enter a valid email address', 'error');
@@ -338,6 +338,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal() {
         emailModal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        
+        // Reset the form and hide TestFlight link if it was previously shown
+        if (emailForm) emailForm.reset();
+        if (formMessage) formMessage.textContent = '';
+        if (testflightLinkContainer) testflightLinkContainer.classList.remove('active');
+        document.getElementById('email-form-container').style.display = 'block';
     }
 
     function closeModal() {
@@ -357,45 +363,60 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function submitEmailToServer(email) {
-        // Simulate sending to server with a delay
+        // Show loading message
         showFormMessage('Sending...', '');
         
-        // In a real implementation, you would use fetch() or XMLHttpRequest to send to your backend
-        setTimeout(function() {
-            // Simulating successful submission
-            showFormMessage('Thank you! Check your email for TestFlight access instructions.', 'success');
-            
-            // Reset form after successful submission
-            emailForm.reset();
-            
-            // Close modal after a delay
-            setTimeout(closeModal, 3000);
-        }, 1500);
+        // In a real implementation, you would send the email to your backend
+        // For this example, we'll use the Firebase Realtime Database API
+        const apiUrl = 'https://moodly-emails-default-rtdb.firebaseio.com/emails.json';
         
-        // Example of what a real implementation might look like:
-        /*
-        fetch('https://your-api-endpoint.com/testflight-signup', {
+        fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: email })
+            body: JSON.stringify({
+                email: email,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer
+            })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                showFormMessage('Thank you! Check your email for TestFlight access instructions.', 'success');
-                emailForm.reset();
-                setTimeout(closeModal, 3000);
-            } else {
-                showFormMessage(data.message || 'Something went wrong. Please try again.', 'error');
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
+            return response.json();
+        })
+        .then(data => {
+            // Hide the form and show success message
+            document.getElementById('email-form-container').style.display = 'none';
+            showFormMessage('Thank you for your interest in Moodly!', 'success');
+            
+            // Show the TestFlight link
+            testflightLinkContainer.classList.add('active');
         })
         .catch(error => {
-            showFormMessage('Connection error. Please try again later.', 'error');
-            console.error('Error:', error);
+            console.error('Error submitting email:', error);
+            showFormMessage('There was an error submitting your email. Please try again.', 'error');
         });
-        */
+    }
+
+    // Admin login functionality
+    const adminLoginForm = document.getElementById('admin-login-form');
+    if (adminLoginForm) {
+        adminLoginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('admin-password').value;
+            
+            // Simple password check (in a real app, this would be done server-side)
+            if (password === 'moodly2023admin') {
+                // Redirect to admin dashboard or show admin content
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                alert('Invalid password');
+            }
+        });
     }
 });
 
