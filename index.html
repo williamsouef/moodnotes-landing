@@ -27,16 +27,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Moodly</div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#download" class="btn-primary">Download</a>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo.svg" alt="Moodly Logo">
             </div>
-        </nav>
+            <button id="mobile-menu" class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
@@ -285,134 +293,11 @@
                 </ul>
             </div>
         </div>
-        
-        <!-- App Demo Video Section -->
-        <div class="video-demo-section">
-            <h3>See Moodly in Action</h3>
-            <div class="video-container">
-                <img src="assets/screenshots/dashboard-screen.png" alt="Moodly Demo" class="video-placeholder">
-                <div class="play-button">
-                    <i class="fas fa-play"></i>
-                </div>
-            </div>
-            <p class="video-caption">Watch how Moodly helps you track emotions and gain insights in seconds</p>
-        </div>
     </section>
 
     <div class="space-separator">
         <div class="floating-element"></div>
         <div class="orbit-circle"></div>
-    </div>
-
-    <section id="testimonials" class="testimonials">
-        <h2>The App That's Changing Lives</h2>
-        <div class="testimonial-stats">
-            <div class="stat-item">
-                <span class="stat-number">4.8</span>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span class="stat-label">Average rating</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">500+</span>
-                <span class="stat-label">Active users</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">87%</span>
-                <span class="stat-label">Report improved well-being</span>
-            </div>
-        </div>
-        
-        <div class="testimonial-verification">
-            <i class="fas fa-certificate"></i>
-            <span>All testimonials verified by <strong>TrustPilot</strong></span>
-        </div>
-        
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <img src="https://i.pravatar.cc/60?img=5" alt="User" class="testimonial-avatar">
-                    <div class="testimonial-meta">
-                        <p class="testimonial-author">Alex K., 34</p>
-                        <p class="testimonial-role">Software Developer</p>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="testimonial-text">"As someone who deals with anxiety, Moodly has been life-changing. I can now see clear patterns between my work stress and mood drops. The insights are spot-on and have helped me create better boundaries."</p>
-                <div class="testimonial-results">
-                    <span class="result-tag">Reduced anxiety by 43%</span>
-                </div>
-                <p class="testimonial-date">Using Moodly for 3 months</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <img src="https://i.pravatar.cc/60?img=9" alt="User" class="testimonial-avatar">
-                    <div class="testimonial-meta">
-                        <p class="testimonial-author">Sarah M., 28</p>
-                        <p class="testimonial-role">Teacher</p>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="testimonial-text">"My therapist recommended Moodly, and it's been the perfect complement to our sessions. I can share my mood patterns with her, and we can work on specific triggers. The interface is beautiful and using it feels calming."</p>
-                <div class="testimonial-results">
-                    <span class="result-tag">Therapy sessions 2x more effective</span>
-                </div>
-                <p class="testimonial-date">Using Moodly for 6 months</p>
-            </div>
-            <div class="testimonial-card featured">
-                <div class="featured-badge">Featured</div>
-                <div class="testimonial-header">
-                    <img src="https://i.pravatar.cc/60?img=1" alt="User" class="testimonial-avatar">
-                    <div class="testimonial-meta">
-                        <p class="testimonial-author">Dr. James Wilson</p>
-                        <p class="testimonial-role">Clinical Psychologist</p>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="testimonial-text">"I've recommended Moodly to over 30 of my patients. The data it provides creates a springboard for more meaningful therapy sessions. The UI is intuitive enough for all age groups, and the insights are remarkably accurate."</p>
-                <div class="testimonial-results">
-                    <span class="result-tag">Recommended to 30+ patients</span>
-                </div>
-                <p class="testimonial-date">Recommending Moodly for 1 year</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <img src="https://i.pravatar.cc/60?img=4" alt="User" class="testimonial-avatar">
-                    <div class="testimonial-meta">
-                        <p class="testimonial-author">Michael T., 42</p>
-                        <p class="testimonial-role">Marketing Manager</p>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="testimonial-text">"The correlation between my sleep patterns and mood was a revelation. After two weeks of tracking, Moodly pointed out that my mood drops significantly after nights with less than 6 hours of sleep. Simple but transformative insight."</p>
-                <div class="testimonial-results">
-                    <span class="result-tag">Improved sleep quality by 27%</span>
-                </div>
-                <p class="testimonial-date">Using Moodly for 1 month</p>
-            </div>
-        </div>
-        
-        <div class="testimonial-cta">
-            <p>Join these users and start your well-being journey today</p>
-            <a href="#download" class="btn-primary">Get Early Access</a>
-        </div>
-    </section>
-
-    <div class="gradient-separator">
-        <div class="gradient-line"></div>
     </div>
 
     <section id="about" class="about">
@@ -476,7 +361,7 @@
         </div>
     </section>
 
-    <footer>
+    <footer id="footer" class="footer">
         <div class="footer-content">
             <div class="footer-logo">Moodly</div>
             <div class="footer-simple">
