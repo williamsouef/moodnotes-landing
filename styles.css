@@ -1847,11 +1847,12 @@ section {
 
 /* Séparateur spatial */
 .space-separator {
-    height: 200px;
+    height: 350px; /* Increased height to show the full animation */
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to make the animation fully visible */
     background: linear-gradient(180deg, rgba(30, 30, 30, 0.3) 0%, rgba(18, 18, 18, 0.9) 100%);
+    margin: 40px 0; /* Added margin for better spacing */
 }
 
 .floating-element {
@@ -1869,14 +1870,15 @@ section {
 
 .orbit-circle {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 280px; /* Slightly reduced width to fit better */
+    height: 280px; /* Slightly reduced height to fit better */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     animation: rotate 20s linear infinite;
+    z-index: 1; /* Added z-index to ensure the circle is visible */
 }
 
 .orbit-circle::before {
