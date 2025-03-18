@@ -366,22 +366,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show loading message
         showFormMessage('Sending...', '');
         
-        // In a real implementation, you would send the email to your backend
-        // For this example, we'll use the Firebase Realtime Database API
+        // Stocker l'email localement si le backend échoue
+        let storedEmails = JSON.parse(localStorage.getItem('moodlyEmails') || '[]');
+        storedEmails.push({
+            email: email,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            referrer: document.referrer
+        });
+        localStorage.setItem('moodlyEmails', JSON.stringify(storedEmails));
+        
+        // Essayer d'envoyer au backend
         const apiUrl = 'https://moodly-emails-default-rtdb.firebaseio.com/emails.json';
         
-        fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                referrer: document.referrer
-            })
-        })
+        // Définir un délai maximum pour la requête
+        const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Request timeout')), 5000)
+        );
+        
+        // Combiner la requête fetch avec un timeout
+        Promise.race([
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer
+                })
+            }),
+            timeoutPromise
+        ])
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -389,17 +407,26 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
-            // Hide the form and show success message
-            document.getElementById('email-form-container').style.display = 'none';
-            showFormMessage('Thank you for your interest in Moodly!', 'success');
-            
-            // Show the TestFlight link
-            testflightLinkContainer.classList.add('active');
+            console.log('Email sent successfully:', data);
+            // Continuer avec le reste du processus
+            showSuccessAndLink();
         })
         .catch(error => {
             console.error('Error submitting email:', error);
-            showFormMessage('There was an error submitting your email. Please try again.', 'error');
+            // Malgré l'erreur, on montre quand même le lien TestFlight
+            showFormMessage('Email saved locally. Backend connection failed.', 'success');
+            setTimeout(showSuccessAndLink, 1000);
         });
+        
+        // Fonction pour afficher le succès et le lien TestFlight
+        function showSuccessAndLink() {
+            // Cacher le formulaire et afficher le message de succès
+            document.getElementById('email-form-container').style.display = 'none';
+            showFormMessage('Thank you for your interest in Moodly!', 'success');
+            
+            // Afficher le lien TestFlight
+            testflightLinkContainer.classList.add('active');
+        }
     }
 
     // Admin login functionality
