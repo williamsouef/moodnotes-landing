@@ -249,43 +249,78 @@
 
             // Export data to CSV
             function exportToCsv() {
-                fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data) {
-                            alert('No data to export');
-                            return;
-                        }
-
-                        const emails = [];
-                        for (const key in data) {
-                            if (data.hasOwnProperty(key)) {
-                                emails.push(data[key]);
+                // Récupérer les emails de Firebase et du localStorage
+                Promise.all([
+                    // Essayer de récupérer depuis Firebase
+                    fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .catch(error => {
+                            console.error('Error fetching from Firebase for export:', error);
+                            return null;
+                        }),
+                    // Récupérer depuis localStorage
+                    new Promise(resolve => {
+                        const localEmails = JSON.parse(localStorage.getItem('moodlyEmails') || '[]');
+                        resolve(localEmails);
+                    })
+                ])
+                .then(([firebaseData, localEmails]) => {
+                    let allEmails = [];
+                    
+                    // Traiter les données Firebase si disponibles
+                    if (firebaseData) {
+                        for (const key in firebaseData) {
+                            if (firebaseData.hasOwnProperty(key)) {
+                                allEmails.push({
+                                    id: key,
+                                    source: 'Firebase',
+                                    ...firebaseData[key]
+                                });
                             }
                         }
-
-                        // Create CSV content
-                        let csvContent = "data:text/csv;charset=utf-8,";
-                        csvContent += "Email,Timestamp,User Agent,Referrer\n";
-                        
-                        emails.forEach(item => {
-                            csvContent += `${item.email},${item.timestamp},"${item.userAgent || ''}","${item.referrer || ''}"\n`;
+                    }
+                    
+                    // Ajouter les emails locaux
+                    localEmails.forEach(email => {
+                        allEmails.push({
+                            source: 'Local Storage',
+                            ...email
                         });
-                        
-                        // Create download link
-                        const encodedUri = encodeURI(csvContent);
-                        const link = document.createElement("a");
-                        link.setAttribute("href", encodedUri);
-                        link.setAttribute("download", `moodly-signups-${new Date().toISOString().split('T')[0]}.csv`);
-                        document.body.appendChild(link);
-                        
-                        // Download file
-                        link.click();
-                    })
-                    .catch(error => {
-                        console.error('Error exporting data:', error);
-                        alert('Error exporting data. Please try again.');
                     });
+                    
+                    if (allEmails.length === 0) {
+                        alert('No data to export');
+                        return;
+                    }
+
+                    // Create CSV content
+                    let csvContent = "data:text/csv;charset=utf-8,";
+                    csvContent += "Email,Timestamp,Source,Device,Referrer\n";
+                    
+                    allEmails.forEach(item => {
+                        const deviceType = detectDeviceType(item.userAgent);
+                        csvContent += `"${item.email}","${item.timestamp}","${item.source || 'Unknown'}","${deviceType}","${item.referrer || ''}"\n`;
+                    });
+                    
+                    // Create download link
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", `moodly-signups-${new Date().toISOString().split('T')[0]}.csv`);
+                    document.body.appendChild(link);
+                    
+                    // Download file
+                    link.click();
+                })
+                .catch(error => {
+                    console.error('Error exporting data:', error);
+                    alert('Error exporting data. Please try again.');
+                });
             }
         });
     </script>
