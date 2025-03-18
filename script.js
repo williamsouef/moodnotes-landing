@@ -667,15 +667,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile menu toggle functionality
     const mobileMenuButton = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
+    const mainNav = document.querySelector('.main-nav');
     
     if (mobileMenuButton) {
         mobileMenuButton.addEventListener('click', function() {
             this.classList.toggle('active');
-            navLinks.classList.toggle('active');
+            mainNav.classList.toggle('active');
             
             // Prevent scrolling when menu is open
-            if (navLinks.classList.contains('active')) {
+            if (mainNav.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = '';
@@ -683,22 +683,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Close menu when clicking on a link
-        const menuLinks = navLinks.querySelectorAll('a');
+        const menuLinks = mainNav.querySelectorAll('a');
         menuLinks.forEach(link => {
             link.addEventListener('click', function() {
                 mobileMenuButton.classList.remove('active');
-                navLinks.classList.remove('active');
+                mainNav.classList.remove('active');
                 document.body.style.overflow = '';
             });
         });
         
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
-            if (!event.target.closest('.nav-links') && 
-                !event.target.closest('.menu-toggle') && 
-                navLinks.classList.contains('active')) {
+            if (!event.target.closest('.main-nav') && 
+                !event.target.closest('#mobile-menu') && 
+                mainNav.classList.contains('active')) {
                 mobileMenuButton.classList.remove('active');
-                navLinks.classList.remove('active');
+                mainNav.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
