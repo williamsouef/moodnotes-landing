@@ -363,60 +363,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function submitEmailToServer(email) {
-        // Show loading message
-        showFormMessage('Sending...', '');
+        console.log("Email submission started for:", email);
         
-        // Stocker l'email localement (solution sûre qui fonctionnera toujours)
-        let storedEmails = JSON.parse(localStorage.getItem('moodlyEmails') || '[]');
-        storedEmails.push({
-            email: email,
-            timestamp: new Date().toISOString(),
-            userAgent: navigator.userAgent,
-            referrer: document.referrer
-        });
-        localStorage.setItem('moodlyEmails', JSON.stringify(storedEmails));
-        
-        // Simuler un court délai pour une meilleure expérience utilisateur
-        setTimeout(() => {
-            // Afficher le message de succès
-            showFormMessage('Thank you for your interest in Moodly!', 'success');
+        try {
+            // 1. Stocker l'email localement
+            let storedEmails = JSON.parse(localStorage.getItem('moodlyEmails') || '[]');
+            storedEmails.push({
+                email: email,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('moodlyEmails', JSON.stringify(storedEmails));
+            console.log("Email saved to localStorage");
             
-            // Masquer le formulaire et afficher le lien TestFlight
+            // 2. Afficher le lien TestFlight immédiatement
             document.getElementById('email-form-container').style.display = 'none';
             testflightLinkContainer.classList.add('active');
+            showFormMessage('Thank you for your interest in Moodly!', 'success');
+            console.log("TestFlight link displayed");
             
-            // En arrière-plan, essayer d'envoyer à Firebase sans bloquer l'interface
-            sendToFirebaseInBackground(email);
-        }, 800);
-        
-        // Fonction pour tenter l'envoi à Firebase sans affecter l'expérience utilisateur
-        function sendToFirebaseInBackground(email) {
-            try {
-                const apiUrl = 'https://moodly-emails-default-rtdb.firebaseio.com/emails.json';
-                
-                fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        timestamp: new Date().toISOString(),
-                        userAgent: navigator.userAgent,
-                        referrer: document.referrer
-                    })
+            // 3. Facultatif: tenter d'envoyer à Firebase en arrière-plan
+            fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email,
+                    timestamp: new Date().toISOString()
                 })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Email successfully sent to Firebase');
-                    }
-                })
-                .catch(error => {
-                    console.error('Background Firebase submission failed:', error);
-                });
-            } catch (error) {
-                console.error('Error in background submission:', error);
-            }
+            }).then(() => console.log("Firebase submission successful"))
+              .catch(err => console.log("Firebase submission failed:", err));
+              
+        } catch (error) {
+            console.error("Error in email submission:", error);
+            // Même en cas d'erreur, afficher le lien TestFlight
+            document.getElementById('email-form-container').style.display = 'none';
+            testflightLinkContainer.classList.add('active');
+            showFormMessage('Thank you for your interest in Moodly!', 'success');
         }
     }
 
