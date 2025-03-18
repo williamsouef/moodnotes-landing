@@ -365,12 +365,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function submitEmailToServer(email) {
         console.log("Email submission started for:", email);
         
+        // Track the submission attempt
+        trackEvent('conversion', 'email_submit', email);
+        
         try {
             // 1. Stocker l'email localement
             let storedEmails = JSON.parse(localStorage.getItem('moodlyEmails') || '[]');
             storedEmails.push({
                 email: email,
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toISOString(),
+                source: document.referrer || 'direct'
             });
             localStorage.setItem('moodlyEmails', JSON.stringify(storedEmails));
             console.log("Email saved to localStorage");
@@ -381,19 +385,31 @@ document.addEventListener('DOMContentLoaded', function() {
             showFormMessage('Thank you for your interest in Moodly!', 'success');
             console.log("TestFlight link displayed");
             
+            // Track successful conversion
+            trackEvent('conversion', 'email_success', email);
+            
             // 3. Facultatif: tenter d'envoyer à Firebase en arrière-plan
             fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email: email,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    source: document.referrer || 'direct'
                 })
-            }).then(() => console.log("Firebase submission successful"))
-              .catch(err => console.log("Firebase submission failed:", err));
-              
+            }).then(() => {
+                console.log("Firebase submission successful");
+                trackEvent('backend', 'firebase_success', email);
+            })
+            .catch(err => {
+                console.log("Firebase submission failed:", err);
+                trackEvent('backend', 'firebase_error', String(err));
+            });
+            
         } catch (error) {
             console.error("Error in email submission:", error);
+            trackEvent('error', 'email_submission_error', String(error));
+            
             // Même en cas d'erreur, afficher le lien TestFlight
             document.getElementById('email-form-container').style.display = 'none';
             testflightLinkContainer.classList.add('active');
@@ -416,6 +432,237 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Invalid password');
             }
         });
+    }
+
+    // Fonctions de partage social
+    function shareOnTwitter() {
+        const text = "I just joined the exclusive Moodly beta testing program! Track your emotions and transform your well-being: ";
+        const url = window.location.href;
+        const referralCode = document.getElementById('referral-code').textContent;
+        
+        const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=Moodly,MentalHealth,Wellbeing&via=MoodlyApp`;
+        
+        window.open(shareUrl, '_blank', 'width=550,height=420');
+        return false;
+    }
+
+    function shareOnFacebook() {
+        const url = window.location.href;
+        const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        
+        window.open(shareUrl, '_blank', 'width=550,height=420');
+        return false;
+    }
+
+    function shareViaEmail() {
+        const subject = "Join me on Moodly - The emotional well-being app";
+        const body = `Hey!\n\nI've just joined Moodly's exclusive beta testing program and thought you might be interested too.\n\nMoodly helps you track your emotions in seconds and provides insights to improve your well-being.\n\nUse my referral code: ${document.getElementById('referral-code').textContent}\n\nJoin here: ${window.location.href}\n\nEnjoy!`;
+        
+        const shareUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        window.location.href = shareUrl;
+        return false;
+    }
+
+    function shareViaWhatsApp() {
+        const text = `Hey! I've just joined Moodly's exclusive beta testing program and thought you might be interested too. Use my referral code: ${document.getElementById('referral-code').textContent}\n\nJoin here: ${window.location.href}`;
+        
+        const shareUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+        
+        window.open(shareUrl, '_blank');
+        return false;
+    }
+
+    // Analytics tracking simple
+    function trackEvent(category, action, label = null) {
+        console.log(`EVENT: ${category} - ${action}${label ? ' - ' + label : ''}`);
+        
+        // Si Google Analytics est configuré
+        if (typeof gtag !== 'undefined') {
+            gtag('event', action, {
+                'event_category': category,
+                'event_label': label
+            });
+        }
+        
+        // Stockage local pour le tableau de bord admin
+        try {
+            const events = JSON.parse(localStorage.getItem('moodlyEvents') || '[]');
+            events.push({
+                category,
+                action,
+                label,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('moodlyEvents', JSON.stringify(events));
+        } catch (error) {
+            console.error('Error storing event data:', error);
+        }
+    }
+
+    // Generate a unique referral code for each user
+    function generateReferralCode() {
+        // Get stored code if exists
+        const storedCode = localStorage.getItem('moodlyReferralCode');
+        if (storedCode) {
+            return storedCode;
+        }
+        
+        // Generate a new code
+        const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let result = '';
+        for (let i = 0; i < 6; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        
+        // Store for future use
+        localStorage.setItem('moodlyReferralCode', result);
+        return result;
+    }
+
+    // Copy referral code to clipboard
+    function setupCopyCodeButton() {
+        const copyBtn = document.getElementById('copy-code-btn');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function() {
+                const referralCode = document.getElementById('referral-code').textContent;
+                
+                // Create a temporary input element
+                const tempInput = document.createElement('input');
+                tempInput.value = referralCode;
+                document.body.appendChild(tempInput);
+                
+                // Select and copy
+                tempInput.select();
+                document.execCommand('copy');
+                
+                // Remove the temporary element
+                document.body.removeChild(tempInput);
+                
+                // Show feedback
+                const originalIcon = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalIcon;
+                }, 2000);
+            });
+        }
+    }
+
+    // Update the countdown timer
+    function updateCountdown() {
+        // Set this to your actual deadline
+        const deadline = new Date();
+        deadline.setDate(deadline.getDate() + 2);
+        deadline.setHours(deadline.getHours() + 18);
+        deadline.setMinutes(deadline.getMinutes() + 45);
+        
+        const now = new Date();
+        const timeLeft = deadline - now;
+        
+        if (timeLeft <= 0) {
+            // Deadline passed
+            document.querySelector('.countdown-timer').innerHTML = `
+                <p>Last few spots remaining!</p>
+                <div class="timer-display">
+                    <div class="timer-unit">
+                        <span class="timer-number">0</span>
+                        <span class="timer-label">Days</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number">0</span>
+                        <span class="timer-label">Hours</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number">0</span>
+                        <span class="timer-label">Minutes</span>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+        
+        // Calculate days, hours, minutes
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        
+        // Update the DOM
+        const daysEl = document.querySelector('.timer-unit:nth-child(1) .timer-number');
+        const hoursEl = document.querySelector('.timer-unit:nth-child(2) .timer-number');
+        const minutesEl = document.querySelector('.timer-unit:nth-child(3) .timer-number');
+        
+        if (daysEl && hoursEl && minutesEl) {
+            daysEl.textContent = days;
+            hoursEl.textContent = hours;
+            minutesEl.textContent = minutes;
+        }
+    }
+
+    // Enhanced submitEmailToServer function
+    function enhancedSubmitEmailToServer(email) {
+        console.log("Email submission started for:", email);
+        
+        try {
+            // 1. Store the email locally
+            let storedEmails = JSON.parse(localStorage.getItem('moodlyEmails') || '[]');
+            storedEmails.push({
+                email: email,
+                timestamp: new Date().toISOString(),
+                referralCode: document.getElementById('user-ref-code').textContent
+            });
+            localStorage.setItem('moodlyEmails', JSON.stringify(storedEmails));
+            
+            // 2. Show the TestFlight link
+            document.getElementById('email-form-container').style.display = 'none';
+            
+            // 3. Set user's personal referral code
+            document.getElementById('user-ref-code').textContent = generateReferralCode();
+            
+            // 4. Show the success container
+            testflightLinkContainer.classList.add('active');
+            showFormMessage('Thank you for your interest in Moodly!', 'success');
+            
+            // 5. Try sending to backend in background
+            fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email,
+                    timestamp: new Date().toISOString(),
+                    referralCode: document.getElementById('user-ref-code').textContent
+                })
+            }).then(() => console.log("Firebase submission successful"))
+              .catch(err => console.log("Firebase submission failed:", err));
+                
+        } catch (error) {
+            console.error("Error in email submission:", error);
+            // Even if there's an error, show the TestFlight link
+            document.getElementById('email-form-container').style.display = 'none';
+            testflightLinkContainer.classList.add('active');
+            showFormMessage('Thank you for your interest in Moodly!', 'success');
+        }
+    }
+
+    // Initialize all growth enhancement features
+    setupCopyCodeButton();
+    
+    // Initialize the countdown timer
+    if (document.querySelector('.countdown-timer')) {
+        updateCountdown();
+        // Update every minute
+        setInterval(updateCountdown, 60000);
+    }
+    
+    // Update original submitEmailToServer function if it exists
+    if (typeof submitEmailToServer === 'function') {
+        submitEmailToServer = enhancedSubmitEmailToServer;
+    }
+    
+    // Set initial referral code
+    const userRefCodeEl = document.getElementById('user-ref-code');
+    if (userRefCodeEl) {
+        userRefCodeEl.textContent = generateReferralCode();
     }
 });
 
