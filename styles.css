@@ -3136,4 +3136,19 @@ footer {
         height: 100px;
         top: -50px;
     }
+}
+
+.free-notice {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    margin-top: 10px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+@media (max-width: 576px) {
+    .free-notice {
+        font-size: 14px;
+    }
 } 
