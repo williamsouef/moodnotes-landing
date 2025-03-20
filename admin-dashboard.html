@@ -59,6 +59,12 @@
                     <tr>
                         <td colspan="5" class="loading-msg">Loading data...</td>
                     </tr>
+                    <tr style="display: none;">
+                        <td colspan="5" class="empty-msg">No data available</td>
+                    </tr>
+                    <tr style="display: none;">
+                        <td colspan="5" class="error-msg">Error loading data. Please try again.</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -96,24 +102,31 @@
             // Function to fetch email data
             function fetchEmailData() {
                 const emailsTableBody = document.getElementById('emails-table-body');
-                const loadingMsg = document.querySelector('.loading-msg');
-                const emptyMsg = document.querySelector('.empty-msg');
-                const errorMsg = document.querySelector('.error-msg');
+                const loadingMsg = emailsTableBody.querySelector('.loading-msg');
+                const emptyMsg = emailsTableBody.querySelector('.empty-msg');
+                const errorMsg = emailsTableBody.querySelector('.error-msg');
 
-                emailsTableBody.innerHTML = '';
-                loadingMsg.style.display = 'block';
-                emptyMsg.style.display = 'none';
-                errorMsg.style.display = 'none';
+                // Reset all messages
+                if (loadingMsg) loadingMsg.parentNode.style.display = 'table-row';
+                if (emptyMsg) emptyMsg.parentNode.style.display = 'none';
+                if (errorMsg) errorMsg.parentNode.style.display = 'none';
+                
+                console.log("Fetching email data...");
 
                 // Add a cache-busting parameter to ensure fresh data
                 Promise.all([
                     // Try to fetch from Firebase with cache-busting
                     fetch(`https://moodly-emails-default-rtdb.firebaseio.com/emails.json?timestamp=${new Date().getTime()}`)
                         .then(response => {
+                            console.log("Firebase response:", response);
                             if (!response.ok) {
                                 throw new Error('Network response was not ok');
                             }
                             return response.json();
+                        })
+                        .then(data => {
+                            console.log("Firebase data:", data);
+                            return data;
                         })
                         .catch(error => {
                             console.error('Error fetching from Firebase:', error);
@@ -122,13 +135,14 @@
                     // Get from localStorage
                     new Promise(resolve => {
                         const localEmails = JSON.parse(localStorage.getItem('moodlyEmails') || '[]');
+                        console.log("Local storage emails:", localEmails);
                         resolve(localEmails);
                     })
                 ])
                 .then(([firebaseData, localEmails]) => {
                     let allEmails = [];
                     
-                    // Traiter les données Firebase si disponibles
+                    // Process Firebase data if available
                     if (firebaseData) {
                         for (const key in firebaseData) {
                             if (firebaseData.hasOwnProperty(key)) {
@@ -141,7 +155,7 @@
                         }
                     }
                     
-                    // Ajouter les emails locaux
+                    // Add local emails
                     localEmails.forEach(email => {
                         allEmails.push({
                             source: 'Local Storage',
@@ -149,38 +163,60 @@
                         });
                     });
                     
+                    console.log("All emails combined:", allEmails);
+                    
                     if (allEmails.length === 0) {
-                        emailsTableBody.innerHTML = '<tr><td colspan="5" class="empty-msg">No data available</td></tr>';
+                        console.log("No emails found");
+                        if (loadingMsg) loadingMsg.parentNode.style.display = 'none';
+                        if (emptyMsg) emptyMsg.parentNode.style.display = 'table-row';
                         updateStats(0, 0);
                         return;
                     }
 
-                    // Trier par timestamp (plus récent d'abord)
+                    // Sort by timestamp (most recent first)
                     allEmails.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-                    // Mettre à jour le tableau
+                    // Clear loading message
+                    if (loadingMsg) loadingMsg.parentNode.style.display = 'none';
+                    
+                    // Update the table
                     updateTable(allEmails);
                     
-                    // Mettre à jour les statistiques
+                    // Update statistics
                     updateStats(allEmails.length, countTodaySignups(allEmails));
                 })
                 .catch(error => {
                     console.error('Error processing data:', error);
-                    emailsTableBody.innerHTML = '<tr><td colspan="5" class="error-msg">Error loading data. Please try again.</td></tr>';
+                    if (loadingMsg) loadingMsg.parentNode.style.display = 'none';
+                    if (errorMsg) errorMsg.parentNode.style.display = 'table-row';
                 });
             }
 
             // Function to update the table with email data
             function updateTable(emails) {
                 const emailsTableBody = document.getElementById('emails-table-body');
-                emailsTableBody.innerHTML = '';
+                // Remove all data rows but keep the message rows
+                const messageRows = emailsTableBody.querySelectorAll('.loading-msg, .empty-msg, .error-msg');
+                Array.from(messageRows).forEach(row => {
+                    row.closest('tr').style.display = 'none';
+                });
+                
+                // Remove any existing data rows
+                const dataRows = Array.from(emailsTableBody.querySelectorAll('tr')).filter(row => 
+                    !row.querySelector('.loading-msg') && 
+                    !row.querySelector('.empty-msg') && 
+                    !row.querySelector('.error-msg')
+                );
+                dataRows.forEach(row => row.remove());
 
                 if (emails.length === 0) {
-                    emailsTableBody.innerHTML = '<tr><td colspan="5" class="empty-msg">No data available</td></tr>';
+                    // Show empty message
+                    const emptyRow = emailsTableBody.querySelector('.empty-msg').closest('tr');
+                    if (emptyRow) emptyRow.style.display = 'table-row';
                     return;
                 }
 
-                // Mise à jour des en-têtes du tableau pour inclure la source
+                // Ensure the table headers are correct
                 const tableHead = document.querySelector('.emails-table thead tr');
                 if (tableHead && tableHead.querySelectorAll('th').length === 4) {
                     tableHead.innerHTML = `
@@ -192,6 +228,7 @@
                     `;
                 }
 
+                // Add data rows
                 emails.forEach(item => {
                     const date = new Date(item.timestamp);
                     const row = document.createElement('tr');
@@ -205,7 +242,7 @@
                     // Detect device type from user agent
                     const deviceType = detectDeviceType(item.userAgent);
                     
-                    // Source (Firebase ou Local Storage)
+                    // Source (Firebase or Local Storage)
                     const source = item.source || 'Unknown';
                     
                     row.innerHTML = `
@@ -217,6 +254,8 @@
                     `;
                     emailsTableBody.appendChild(row);
                 });
+                
+                console.log(`Displayed ${emails.length} emails in the table`);
             }
 
             // Function to detect device type from user agent
@@ -256,30 +295,37 @@
 
             // Export data to CSV
             function exportToCsv() {
-                // Récupérer les emails de Firebase et du localStorage
+                console.log("Starting CSV export...");
+                // Get emails from Firebase and localStorage
                 Promise.all([
-                    // Essayer de récupérer depuis Firebase
-                    fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json')
+                    // Try to fetch from Firebase with cache-busting
+                    fetch(`https://moodly-emails-default-rtdb.firebaseio.com/emails.json?timestamp=${new Date().getTime()}`)
                         .then(response => {
+                            console.log("Firebase response for export:", response);
                             if (!response.ok) {
                                 throw new Error('Network response was not ok');
                             }
                             return response.json();
                         })
+                        .then(data => {
+                            console.log("Firebase data for export:", data);
+                            return data;
+                        })
                         .catch(error => {
                             console.error('Error fetching from Firebase for export:', error);
                             return null;
                         }),
-                    // Récupérer depuis localStorage
+                    // Get from localStorage
                     new Promise(resolve => {
                         const localEmails = JSON.parse(localStorage.getItem('moodlyEmails') || '[]');
+                        console.log("Local storage emails for export:", localEmails);
                         resolve(localEmails);
                     })
                 ])
                 .then(([firebaseData, localEmails]) => {
                     let allEmails = [];
                     
-                    // Traiter les données Firebase si disponibles
+                    // Process Firebase data if available
                     if (firebaseData) {
                         for (const key in firebaseData) {
                             if (firebaseData.hasOwnProperty(key)) {
@@ -292,13 +338,15 @@
                         }
                     }
                     
-                    // Ajouter les emails locaux
+                    // Add local emails
                     localEmails.forEach(email => {
                         allEmails.push({
                             source: 'Local Storage',
                             ...email
                         });
                     });
+                    
+                    console.log(`Total emails for export: ${allEmails.length}`);
                     
                     if (allEmails.length === 0) {
                         alert('No data to export');
