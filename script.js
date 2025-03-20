@@ -389,13 +389,14 @@ document.addEventListener('DOMContentLoaded', function() {
             trackEvent('conversion', 'email_success', email);
             
             // 3. Facultatif: tenter d'envoyer à Firebase en arrière-plan
-            fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json', {
+            fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json?timestamp=' + new Date().getTime(), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email: email,
                     timestamp: new Date().toISOString(),
-                    source: document.referrer || 'direct'
+                    source: document.referrer || 'direct',
+                    userAgent: navigator.userAgent // Add user agent for better tracking
                 })
             }).then(() => {
                 console.log("Firebase submission successful");
@@ -624,7 +625,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showFormMessage('Thank you for your interest in Moodly!', 'success');
             
             // 5. Try sending to backend in background
-            fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json', {
+            fetch('https://moodly-emails-default-rtdb.firebaseio.com/emails.json?timestamp=' + new Date().getTime(), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
