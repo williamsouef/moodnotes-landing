@@ -353,10 +353,9 @@ p {
 }
 
 .hero-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-2xl);
-    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--spacing-xl);
     position: relative;
     z-index: 1;
 }
@@ -364,7 +363,9 @@ p {
 .hero-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    max-width: 750px;
 }
 
 .hero h1 {
@@ -418,39 +419,6 @@ p {
 .micro-copy {
     font-size: var(--font-size-sm);
     color: var(--text-tertiary);
-}
-
-.device-showcase {
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.phone-mockup {
-    position: relative;
-    width: 280px;
-    border-radius: var(--radius-lg);
-    background-color: var(--background-secondary);
-    box-shadow: var(--shadow-lg);
-    overflow: hidden;
-    transform: perspective(1000px) rotateY(-5deg);
-    transition: all var(--transition-normal);
-}
-
-.phone-mockup:hover {
-    transform: perspective(1000px) rotateY(-5deg) translateY(-10px);
-    box-shadow: 0 20px 40px rgba(115, 113, 252, 0.3);
-}
-
-.phone-screen {
-    border-radius: var(--radius-md);
-    overflow: hidden;
-}
-
-.phone-screen img {
-    width: 100%;
-    height: auto;
-    display: block;
 }
 
 /* Features Section */
@@ -1102,16 +1070,6 @@ p {
         grid-template-columns: 1fr;
     }
     
-    .device-showcase {
-        grid-row: 1;
-        margin-bottom: var(--spacing-xl);
-    }
-    
-    .hero-content {
-        text-align: center;
-        align-items: center;
-    }
-    
     .problem-solution {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
@@ -1162,10 +1120,6 @@ p {
         padding: var(--spacing-2xl) 0;
     }
     
-    .phone-mockup {
-        width: 240px;
-    }
-    
     .trust-badges {
         justify-content: center;
     }
@@ -1205,7 +1159,7 @@ p {
 }
 
 .testimonial-text::before {
-    content: """;
+    content: "\201C";  /* Guillemet ouvrant */
     font-size: 4rem;
     color: rgba(115, 113, 252, 0.1);
     position: absolute;
@@ -1289,4 +1243,28 @@ a:focus, button:focus, input:focus, textarea:focus {
     padding: 0;
     position: absolute;
     width: 1px;
+}
+
+.qr-code-container {
+    margin: 1.5rem auto;
+    text-align: center;
+    max-width: 200px;
+}
+
+.qr-code-text {
+    margin-bottom: 0.5rem;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.qr-code {
+    width: 150px;
+    height: 150px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
 } 

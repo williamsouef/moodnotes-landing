@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <!-- Background -->
+  <rect width="300" height="300" fill="white" />
+  
+  <!-- QR Code (simplified representation) -->
+  <g stroke="none" fill="black">
+    <!-- Finder patterns (corners) -->
+    <rect x="30" y="30" width="30" height="30" />
+    <rect x="35" y="35" width="20" height="20" fill="white" />
+    <rect x="40" y="40" width="10" height="10" />
+    
+    <rect x="240" y="30" width="30" height="30" />
+    <rect x="245" y="35" width="20" height="20" fill="white" />
+    <rect x="250" y="40" width="10" height="10" />
+    
+    <rect x="30" y="240" width="30" height="30" />
+    <rect x="35" y="245" width="20" height="20" fill="white" />
+    <rect x="40" y="250" width="10" height="10" />
+    
+    <!-- QR Code pixels (simplified) -->
+    <!-- Row 1 -->
+    <rect x="30" y="80" width="10" height="10" />
+    <rect x="50" y="80" width="10" height="10" />
+    <rect x="90" y="80" width="10" height="10" />
+    <rect x="110" y="80" width="10" height="10" />
+    <rect x="130" y="80" width="10" height="10" />
+    <rect x="140" y="80" width="10" height="10" />
+    <rect x="150" y="80" width="10" height="10" />
+    <rect x="170" y="80" width="10" height="10" />
+    <rect x="190" y="80" width="10" height="10" />
+    <rect x="210" y="80" width="10" height="10" />
+    <rect x="240" y="80" width="10" height="10" />
+    <rect x="260" y="80" width="10" height="10" />
+    
+    <!-- More rows (simplified) -->
+    <!-- This is a representative pattern, not the actual QR code data -->
+    <rect x="50" y="100" width="10" height="10" />
+    <rect x="70" y="100" width="10" height="10" />
+    <rect x="100" y="100" width="10" height="10" />
+    <rect x="130" y="100" width="10" height="10" />
+    <rect x="190" y="100" width="10" height="10" />
+    <rect x="220" y="100" width="10" height="10" />
+    <rect x="250" y="100" width="10" height="10" />
+    
+    <!-- Additional rows would follow -->
+    
+    <!-- Center embellishment for the app icon -->
+    <circle cx="150" cy="150" r="25" fill="white" />
+  </g>
+  
+  <!-- App Icon in the center -->
+  <circle cx="150" cy="150" r="22" fill="url(#appIconGradient)" />
+  
+  <!-- Icon gradients -->
+  <defs>
+    <radialGradient id="appIconGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#B39DDB" />
+      <stop offset="45%" stop-color="#7371FC" />
+      <stop offset="100%" stop-color="#5C6BC0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Smiley face in the app icon -->
+  <path d="M150,158 C157,158 163,152 163,145 C157,147 143,147 137,145 C137,152 143,158 150,158 Z" fill="white" />
+</svg> 
