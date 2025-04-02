@@ -3,55 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moodly | Track Your Emotional Well-being</title>
-    <meta name="description" content="Track emotions, identify patterns, and gain life-changing insights with Moodly, the #1 mood tracking app trusted by mental health professionals.">
-    <meta property="og:title" content="Moodly - Mental Health Made Simple">
-    <meta property="og:description" content="Join 500+ people improving their well-being by tracking emotions and gaining powerful insights.">
-    <meta property="og:image" content="assets/images/moodly-og-image.jpg">
-    <meta property="og:url" content="https://moodly.app">
-    <meta name="twitter:card" content="summary_large_image">
+    <title>Moodly - Understand Your Emotions to Live Better Days</title>
+    <meta name="description" content="Moodly is an elegant emotional analysis app that helps you reconnect with yourself, understand your inner patterns, and create lasting balance.">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="logo-wrapper">
-                <div class="logo">
-                    <img src="assets/images/moodly-app-icon.png.png" alt="Moodly Logo">
-                    <span class="logo-text">Moodly</span>
-                </div>
-                <span class="logo-tagline">Track your emotions</span>
-            </div>
+            <a href="#" class="logo">
+                <img src="assets/images/moodly-app-icon.png.png" alt="Moodly Logo">
+                <span class="logo-text">Moodly</span>
+            </a>
             
-            <nav class="main-nav">
+            <nav>
                 <ul class="nav-links">
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#download">Download</a></li>
-                    <li><a href="#footer" class="nav-contact">Contact</a></li>
+                    <li><a href="#testimonials">Stories</a></li>
+                    <li><a href="https://apple.co/4iULxSk">Download</a></li>
                 </ul>
-                
-                <a href="#download" class="header-cta">
-                    Get Early Access
-                    <span class="header-cta-badge">Beta</span>
-                </a>
             </nav>
             
-            <button id="mobile-menu" class="mobile-menu" aria-label="Toggle menu">
+            <a href="#download" class="header-cta">
+                <i class="fas fa-bolt"></i>
+                Download Now
+            </a>
+            
+            <button class="mobile-menu" aria-label="Toggle Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -59,400 +50,196 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Track Your Emotions, Transform Your Life</h1>
-                <p class="hero-subtitle">Discover powerful insights about your mental well-being in just seconds a day with the #1 emotion tracking app trusted by therapists.</p>
-                <div class="trust-badges">
-                    <span><i class="fas fa-lock"></i> Privacy-Focused</span>
-                    <span><i class="fas fa-shield-alt"></i> Data Encrypted</span>
-                    <span><i class="fas fa-ban"></i> Ad-Free Experience</span>
-                </div>
-                <div class="cta-buttons">
-                    <a href="#download" class="btn-primary">Get Early Access</a>
-                    <a href="#features" class="btn-secondary">See How It Works</a>
-                </div>
-                <p class="micro-copy">Installation takes 30 seconds • No credit card • Easy to uninstall</p>
+        <div class="container hero-container">
+            <div class="hero-content animate-fade-in">
+                <h1>Understand Your Emotions to Live Better Days</h1>
+                <p class="hero-subtitle">Moodly is an elegant emotional analysis app that helps you reconnect with yourself, understand your inner patterns, and create lasting balance.</p>
                 
-                <div class="floating-quote">
-                    <div class="quote-bubble">
-                        <p>"Understanding your emotions is the first step towards well-being"</p>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Complete Privacy</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Data</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-ban"></i>
+                        <span>Ad-Free</span>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="https://apple.co/4iULxSk" class="btn btn-primary btn-lg">
+                        <i class="fab fa-apple"></i>
+                        Download on App Store
+                    </a>
+                    <a href="#features" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-info-circle"></i>
+                        Discover Moodly
+                    </a>
+                </div>
+                
+                <p class="micro-copy">30-second installation • Free • Easy to uninstall</p>
+                <p class="free-notice">⚡ It's free now but not forever ⚡</p>
+            </div>
+            
+            <div class="device-showcase animate-fade-in" style="animation-delay: 0.2s;">
+                <div class="phone-mockup float">
+                    <div class="phone-screen">
+                        <img src="assets/images/app-screenshot.svg" alt="Moodly App Screenshot" class="app-screenshot">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Emotions Can Be Unclear</h2>
+                <p class="section-description">We've designed Moodly to help you navigate your emotional landscape with clarity and purpose.</p>
+            </div>
+            
+            <div class="problem-solution">
+                <div class="problem">
+                    <h3 class="problem-title">Do you recognize yourself?</h3>
+                    
+                    <div class="problem-item">
+                        <i class="fas fa-question-circle"></i>
+                        <p>Do you feel uneasy without really knowing why?</p>
+                    </div>
+                    
+                    <div class="problem-item">
+                        <i class="fas fa-redo"></i>
+                        <p>Do you keep revisiting the same scenarios without finding a way out?</p>
+                    </div>
+                    
+                    <div class="problem-item">
+                        <i class="fas fa-compass"></i>
+                        <p>Do you want to grow emotionally but don't know where to start?</p>
+                    </div>
+                </div>
+                
+                <div class="solution">
+                    <h3>Moodly gives you a safe, visual, and intelligent space to observe, understand, and transform your inner world.</h3>
+                    <p>With advanced emotional analysis, personalized graphs, and a soothing design, you transform your feelings into clarity.</p>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Visualize Your Moods</h3>
+                    <p>Like an inner weather forecast, observe the evolution of your emotions over time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Detect Patterns</h3>
+                    <p>Discover invisible patterns that influence your daily well-being.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Take Care of Yourself</h3>
+                    <p>A gentle, pressure-free approach to your mental health.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Get Insights</h3>
+                    <p>Personalized advice to progress at your own pace.</p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h2>🌿 Reconnect with Your Inner World</h2>
+                <p>Start free with Moodly</p>
+                <a href="https://apple.co/4iULxSk" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i>
+                    Download on App Store
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Stories from Our Community</h2>
+                <p class="section-description">See how Moodly is helping people transform their emotional lives</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Moodly is like an emotional mirror. I understand myself better every day and have been able to break negative thought patterns I didn't even realize I had."</p>
+                    
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah K.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah K.</h4>
+                            <p>Using Moodly for 3 months</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As someone who struggled with anxiety, Moodly has been a revelation. Being able to track my emotions has helped me identify triggers and develop healthier coping strategies."</p>
+                    
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael T.</h4>
+                            <p>Using Moodly for 6 months</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I love how the app doesn't judge or pressure me. It's just there, ready whenever I need to check in with myself. The insights it provides have been genuinely helpful."</p>
+                    
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma L.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emma L.</h4>
+                            <p>Using Moodly for 2 months</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="device-showcase">
-                <div class="device-wrapper">
-                    <div class="device device-1" id="device-1">
-                        <div class="device-shadow"></div>
-                        <div class="device-frame">
-                            <div class="device-screen">
-                                <img src="assets/screenshots/dashboard-screen.png" alt="Moodly Dashboard">
-                            </div>
-                            <div class="device-highlight"></div>
-                            <div class="device-features">
-                                <div class="feature-dot" style="top: 35%; left: 25%">
-                                    <span class="dot-pulse"></span>
-                                    <div class="feature-info">
-                                        <h4>Mood Tracking</h4>
-                                        <p>Easily record your mood with expressive emojis</p>
-                                    </div>
-                                </div>
-                                <div class="feature-dot" style="top: 65%; left: 75%">
-                                    <span class="dot-pulse"></span>
-                                    <div class="feature-info">
-                                        <h4>Weekly Statistics</h4>
-                                        <p>Visualize your mood evolution over time</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="device device-2" id="device-2">
-                        <div class="device-shadow"></div>
-                        <div class="device-frame">
-                            <div class="device-screen">
-                                <img src="assets/screenshots/history-screen.png" alt="Moodly History">
-                            </div>
-                            <div class="device-highlight"></div>
-                            <div class="device-features">
-                                <div class="feature-dot" style="top: 30%; left: 65%">
-                                    <span class="dot-pulse"></span>
-                                    <div class="feature-info">
-                                        <h4>Detailed History</h4>
-                                        <p>View the complete history of your emotions</p>
-                                    </div>
-                                </div>
-                                <div class="feature-dot" style="top: 55%; left: 25%">
-                                    <span class="dot-pulse"></span>
-                                    <div class="feature-info">
-                                        <h4>Personalized Insights</h4>
-                                        <p>Receive analysis based on your emotional data</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="device-controls">
-                    <button class="device-btn active" data-device="device-1">Dashboard</button>
-                    <button class="device-btn" data-device="device-2">History</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <span class="mouse">
-                <span class="mouse-wheel"></span>
-            </span>
-            <p>Discover more</p>
-        </div>
-    </section>
-
-    <section class="interactive-banner">
-        <div class="banner-content">
-            <h2>Transform Your Well-being Journey</h2>
-            <p>Discover how just 10 seconds of daily emotion tracking can lead to life-changing insights</p>
-        </div>
-        <div class="emoji-cloud">
-            <span class="floating-emoji" style="--delay: 0s; --size: 70px; --top: 20%; --left: 80%;">😊</span>
-            <span class="floating-emoji" style="--delay: 2s; --size: 55px; --top: 60%; --left: 30%;">😌</span>
-            <span class="floating-emoji" style="--delay: 4s; --size: 65px; --top: 75%; --left: 70%;">🙂</span>
-            <span class="floating-emoji" style="--delay: 6s; --size: 50px; --top: 30%; --left: 20%;">😍</span>
-            <span class="floating-emoji" style="--delay: 8s; --size: 60px; --top: 40%; --left: 60%;">😀</span>
-            <span class="floating-emoji negative" style="--delay: 3s; --size: 55px; --top: 65%; --left: 15%;">😔</span>
-            <span class="floating-emoji negative" style="--delay: 5s; --size: 60px; --top: 25%; --left: 40%;">😢</span>
-            <span class="floating-emoji negative" style="--delay: 7s; --size: 50px; --top: 70%; --left: 85%;">😕</span>
-        </div>
-        <div class="scroll-indicator">
-            <span class="mouse">
-                <span class="mouse-wheel"></span>
-            </span>
-            <p>Discover more</p>
-        </div>
-    </section>
-
-    <div class="wave-separator">
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="parallax-dots">
-            <span class="dot dot1"></span>
-            <span class="dot dot2"></span>
-            <span class="dot dot3"></span>
-            <span class="dot dot4"></span>
-            <span class="dot dot5"></span>
-        </div>
-    </div>
-
-    <section id="features" class="features">
-        <h2>How Moodly Transforms Your Mental Health</h2>
-        <div class="user-journey">
-            <div class="journey-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Track Daily Emotions</h3>
-                    <p>Record how you feel in just seconds each day</p>
-                </div>
-                <div class="step-image">
-                    <img src="assets/images/journey-track.svg" alt="Track emotions">
-                </div>
-            </div>
-            <div class="journey-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Discover Patterns</h3>
-                    <p>AI analyzes your emotional data to find triggers</p>
-                </div>
-                <div class="step-image">
-                    <img src="assets/images/journey-patterns.svg" alt="Discover patterns">
-                </div>
-            </div>
-            <div class="journey-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Gain Insights</h3>
-                    <p>Receive personalized recommendations that work</p>
-                </div>
-                <div class="step-image">
-                    <img src="assets/images/journey-insights.svg" alt="Gain insights">
-                </div>
-            </div>
-            <div class="journey-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>Transform Your Life</h3>
-                    <p>Make better decisions based on emotional awareness</p>
-                </div>
-                <div class="step-image">
-                    <img src="assets/images/journey-transform.svg" alt="Transform your life">
-                </div>
-            </div>
-        </div>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon" style="background-color: #2E6D4A;">
-                    <i class="fas fa-plus"></i>
-                </div>
-                <h3>Easy Mood Tracking</h3>
-                <p>Record your emotions in just 10 seconds a day, with intuitive emoji selection and quick-add notes.</p>
-                <div class="feature-benefit">
-                    <i class="fas fa-bolt"></i>
-                    <span>Saves 95% time compared to traditional journaling</span>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background-color: #B6743C;">
-                    <i class="fas fa-history"></i>
-                </div>
-                <h3>Comprehensive History</h3>
-                <p>Access your complete emotional timeline with beautiful visualizations showing your mood journey.</p>
-                <div class="feature-benefit">
-                    <i class="fas fa-bolt"></i>
-                    <span>Recall exactly how you felt on any given day</span>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background-color: #7E4E99;">
-                    <i class="fas fa-chart-pie"></i>
-                </div>
-                <h3>AI-Powered Insights</h3>
-                <p>Our advanced algorithms analyze your emotional patterns to provide personalized recommendations.</p>
-                <div class="feature-benefit">
-                    <i class="fas fa-bolt"></i>
-                    <span>Identify triggers you never noticed before</span>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background-color: #3A6F9A;">
-                    <i class="fas fa-cog"></i>
-                </div>
-                <h3>Customizable Experience</h3>
-                <p>Tailor Moodly to your preferences with custom categories, reminders, and privacy settings.</p>
-                <div class="feature-benefit">
-                    <i class="fas fa-bolt"></i>
-                    <span>Make the app work exactly how you need it</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="problem-solution">
-            <div class="problem-box">
-                <h3>Do any of these sound familiar?</h3>
-                <ul class="problem-list">
-                    <li><i class="fas fa-times"></i> You feel overwhelmed but don't know why</li>
-                    <li><i class="fas fa-times"></i> Mood swings seem to come out of nowhere</li>
-                    <li><i class="fas fa-times"></i> You've tried journaling but can't stay consistent</li>
-                    <li><i class="fas fa-times"></i> It's hard to remember how you felt even a week ago</li>
-                    <li><i class="fas fa-times"></i> You want to improve but don't know where to start</li>
-                </ul>
-            </div>
-            <div class="arrow-connector">
-                <i class="fas fa-long-arrow-alt-right"></i>
-            </div>
-            <div class="solution-box">
-                <h3>Moodly solves all of this</h3>
-                <ul class="solution-list">
-                    <li><i class="fas fa-check"></i> Identify exact triggers of negative emotions</li>
-                    <li><i class="fas fa-check"></i> Predict mood patterns before they happen</li>
-                    <li><i class="fas fa-check"></i> Track your emotions in just 10 seconds a day</li>
-                    <li><i class="fas fa-check"></i> Build a searchable record of your emotional journey</li>
-                    <li><i class="fas fa-check"></i> Get personalized suggestions for improvement</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <div class="space-separator">
-        <div class="floating-element"></div>
-        <div class="orbit-circle"></div>
-    </div>
-
-    <section id="about" class="about">
-        <h2>About Moodly</h2>
-        <p>Moodly was born from the belief that emotional awareness is the key to well-being. Our application helps you transform simple mood recordings into valuable insights to improve your quality of life.</p>
-        <div class="quote-card">
-            <p class="quote-text">"Happiness is found when you stop comparing yourself to others."</p>
-            <p class="quote-source">- Daily insight from Moodly</p>
-        </div>
-    </section>
-
-    <section id="download" class="download">
-        <h2>Try Moodly Today</h2>
-        <p>Join our exclusive TestFlight program and be among the first to transform your emotional well-being</p>
-        <div class="download-buttons">
-            <a href="javascript:void(0)" id="testflight-btn" class="download-btn pulse-animation">
-                <i class="fab fa-apple"></i>
-                <span>
-                    <small>Get access on</small>
-                    <strong>TestFlight</strong>
-                </span>
-            </a>
-        </div>
-        <p class="free-notice">It's free now but not forever</p>
-        <div class="download-benefits">
-            <div class="benefit-item">
-                <i class="fas fa-bolt"></i>
-                <span>Early adopters get lifetime premium access</span>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-comment-alt"></i>
-                <span>Direct influence on future features</span>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-gift"></i>
-                <span>Exclusive wellness content library</span>
-            </div>
-        </div>
-    </section>
-
-    <footer id="footer" class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">Moodly</div>
-            <div class="footer-simple">
-                <p>An application to track and improve your emotional well-being</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 Moodly. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- TestFlight Email Capture Modal -->
-    <div id="email-modal" class="email-modal">
-        <div class="email-modal-content">
-            <span class="close-modal">&times;</span>
-            <div id="email-form-container">
-                <div class="modal-header">
-                    <div class="modal-emoji">🚀</div>
-                    <h3>Get Priority Access to Moodly Beta</h3>
-                    <p>Join our exclusive TestFlight program</p>
-                </div>
-                <form id="email-capture-form">
-                    <div class="form-group">
-                        <input type="email" id="user-email" placeholder="Your email address" required>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="submit-btn">Secure My Spot <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                    <div class="form-message"></div>
-                </form>
-                <div class="incentives">
-                    <div class="incentive-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Early adopters get lifetime premium access</span>
-                    </div>
-                    <div class="incentive-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Priority access to new features</span>
-                    </div>
-                    <div class="incentive-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Direct contact with our team</span>
-                    </div>
-                </div>
-                <div class="privacy-note">
-                    <p>We'll only use your email for TestFlight access. No spam, ever. <a href="#">Privacy Policy</a></p>
-                </div>
-                <div class="social-proof">
-                    <div class="avatars">
-                        <img src="https://i.pravatar.cc/30?img=1" alt="User">
-                        <img src="https://i.pravatar.cc/30?img=2" alt="User">
-                        <img src="https://i.pravatar.cc/30?img=3" alt="User">
-                        <span>+24</span>
-                    </div>
-                    <p>27 people signed up in the last 24 hours</p>
-                </div>
-            </div>
-            <!-- TestFlight Link Container (hidden by default) -->
-            <div id="testflight-link-container" class="testflight-link-container">
-                <div class="success-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <h3>Thank you for joining!</h3>
-                <p>Install Moodly beta using the link below:</p>
-                <a href="https://testflight.apple.com/join/abcDEF123" class="testflight-link" target="_blank">
-                    <i class="fab fa-apple"></i> Open TestFlight
+            <div class="cta-section">
+                <h2>Join Thousands of Happy Users</h2>
+                <p>Experience the benefits of emotional tracking for yourself</p>
+                <a href="https://apple.co/4iULxSk" class="btn btn-primary btn-lg">
+                    <i class="fas fa-heart"></i>
+                    Download Now
                 </a>
-                <div class="share-section">
-                    <p>Help us grow! Share with friends:</p>
-                    <div class="share-buttons">
-                        <a href="#" class="share-btn" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="share-btn" onclick="shareOnFacebook()"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="share-btn" onclick="shareViaEmail()"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="share-btn" onclick="shareViaWhatsApp()"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="referral-code">
-                    <p>Your personal referral code:</p>
-                    <div class="code-display">
-                        <code id="referral-code">MOODLY<span id="user-ref-code">XYZ123</span></code>
-                        <button id="copy-code-btn" class="copy-btn"><i class="fas fa-copy"></i></button>
-                    </div>
-                    <p class="referral-benefit">Invite 3 friends using your code and get 1 year of premium free!</p>
-                </div>
-                <div class="testflight-note">
-                    <p>You'll also receive an email with these instructions.</p>
-                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Hidden Admin Access (will be accessible via /admin.html page) -->
-    <div id="admin-access" style="display: none;">
-        <form id="admin-login-form">
-            <input type="password" id="admin-password" placeholder="Admin Password">
-            <button type="submit">Login</button>
-        </form>
-    </div>
-
+    </section>
+    
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html> 
