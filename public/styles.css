@@ -1267,4 +1267,141 @@ a:focus, button:focus, input:focus, textarea:focus {
 
 .qr-code:hover {
     transform: scale(1.05);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #8f8dff;
+        --primary-hover: #b3b1ff;
+        --secondary-color: #ffb07a;
+        --accent-color: #44d9e8;
+        --gradient-primary: linear-gradient(135deg, #23244a, #3a3b6a);
+        --gradient-secondary: linear-gradient(135deg, #ffb07a, #ff7e5f);
+        --gradient-accent: linear-gradient(135deg, #44d9e8, #3cbedd);
+        --text-primary: #fff;
+        --text-secondary: #d1d5db;
+        --text-tertiary: #a1a1aa;
+        --text-light: #fff;
+        --background-primary: #18192a;
+        --background-secondary: #23244a;
+        --background-tertiary: #23244a;
+        --border-color: #35365c;
+        --shadow-sm: 0 4px 12px rgba(143, 141, 255, 0.08);
+        --shadow-md: 0 6px 24px rgba(143, 141, 255, 0.12);
+        --shadow-lg: 0 12px 32px rgba(143, 141, 255, 0.18);
+    }
+    body {
+        background-color: var(--background-primary);
+        color: var(--text-primary);
+    }
+    .header, .footer {
+        background-color: var(--background-secondary);
+        border-bottom: 1px solid var(--border-color);
+        border-top: 1px solid var(--border-color);
+    }
+    .section, .features, .testimonials {
+        background-color: var(--background-primary);
+    }
+    .problem, .feature-card, .journey-step, .modal-content {
+        background-color: var(--background-secondary);
+        color: var(--text-primary);
+        box-shadow: var(--shadow-sm);
+    }
+    .solution {
+        background: var(--gradient-primary);
+        color: var(--text-light);
+    }
+    .trust-badge, .cta-section {
+        background-color: var(--background-tertiary);
+        color: var(--text-secondary);
+    }
+    .btn-primary {
+        background: var(--gradient-primary);
+        color: var(--text-light);
+    }
+    .btn-secondary {
+        background-color: var(--background-secondary);
+        color: var(--primary-color);
+        border: 1px solid var(--border-color);
+    }
+    .btn-primary:hover, .btn-secondary:hover {
+        box-shadow: var(--shadow-md);
+    }
+    .feature-icon {
+        background: var(--gradient-primary);
+        color: var(--text-light);
+    }
+    .qr-code-container {
+        background: var(--background-secondary);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+    }
+    .micro-copy, .free-notice {
+        color: var(--text-tertiary);
+    }
+    input, textarea, .form-input {
+        background-color: var(--background-primary);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+    .form-input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(143, 141, 255, 0.15);
+    }
+    .testimonial-card {
+        background: var(--background-secondary);
+        color: var(--text-primary);
+    }
+    .testimonial-text {
+        color: var(--text-primary);
+    }
+    .author-info h4, .author-info p {
+        color: var(--text-secondary);
+    }
+    .cta-section {
+        background: linear-gradient(135deg, rgba(143, 141, 255, 0.08) 0%, rgba(68, 217, 232, 0.08) 100%);
+    }
+}
+
+/* FAQ Section */
+.faq-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.faq-item {
+  background: var(--background-tertiary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem 2rem;
+  transition: box-shadow var(--transition-normal);
+}
+.faq-item:hover {
+  box-shadow: var(--shadow-md);
+}
+.faq-question {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+.faq-answer {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (prefers-color-scheme: dark) {
+  .faq-item {
+    background: var(--background-secondary);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+  }
+  .faq-question {
+    color: var(--primary-color);
+  }
+  .faq-answer {
+    color: var(--text-secondary);
+  }
 } 
